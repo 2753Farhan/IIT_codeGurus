@@ -1,0 +1,6 @@
+open folder
+cd apiproject
+"E:\Django Rest Framework8\draenv\Scripts\activate"
+pip install django
+pip install django djangorestframework
+python manage.py runserver
