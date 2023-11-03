@@ -1,7 +1,7 @@
 from django.urls import path
-from . import views, views2
+from . import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('city/<str:state>/<str:country>/<str:city>/', views2.city_detail, name='city_detail'),
+    path('', views.step1, name='step1'),  # This is the root URL pattern
+    path('step2/<str:state>/<str:country>/<str:selected_city>/', views.step2, name='step2'),
 ]

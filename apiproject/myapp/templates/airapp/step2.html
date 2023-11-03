@@ -1,33 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Air Information</title>
+    <title>Air Information - Step 2</title>
 </head>
 <body>
-    <h1>Air Quality Information</h1>
-
-    <form method="post">
-        {% csrf_token %}
-        <label for="state">State: </label>
-        <input type="text" name="state" id="state" required><br>
-
-        <label for="country">Country: </label>
-        <input type text name="country" id="country" required><br>
-
-        <label for="city">City: </label>
-        <input type="text" name="city" id="city" required><br>
-
-        <input type="submit" value="Get Air Quality Information">
-    </form>
-
-    {% if city_list %}
-        <h2>Available Cities:</h2>
-        <ul>
-            {% for city in city_list.data %}
-                <li>{{ city.city }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+    <h1>Step 2: Select City and Get AQI Data</h1>
 
     {% if city_data %}
         <h2>Response for {{ city_data.data.city }}, {{ city_data.data.state }}, {{ city_data.data.country }}:</h2>

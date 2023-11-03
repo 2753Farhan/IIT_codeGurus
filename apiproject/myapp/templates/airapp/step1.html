@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Step 1: Select State and Country</title>
+</head>
+<body>
+    <h1>Step 1: Select State and Country</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="state">State: </label>
+        <input type="text" name="state" id="state" value=" " required><br>
+        <label for="country">Country: </label>
+        <input type="text" name="country" id="country" value=" " required><br>
+        <input type="submit" value="Get Cities List">
+    </form>
+    <!-- <script>
+        var country = ""; // Initialize the country variable
+        var state = "";   // Initialize the state variable
+
+        function storeValues() {
+            country = document.getElementById("country").value;
+            state = document.getElementById("state").value;
+            return true; // Continue form submission
+        }
+    </script> -->
+    <!-- {% if city_data %}
+    <h2>Response for {{ city_data.data.state }}, {{ city_data.data.country }}:</h2>
+    <pre>{{ city_data|safe }}</pre>
+    {% endif %} -->
+    {% if city_list %}
+        <h2>Available Cities for :</h2>
+
+        <h2>Response for {{ country }}, {{ state }}:</h2>
+        <pre>{{ city_data|safe }}</pre>
+
+        <ul>
+            <ul>
+                {% for city in city_list.data %}
+                    <!-- <li>{{ city.city }}</li> -->
+                    <a href="{% url 'step2' state country city.city %}">
+                        <li>{{city.city}}</li>
+                    </a>
+                {% endfor %}
+            </ul>
+            <!-- <li>
+                <a href="{% url 'step2' state='Dhaka' country='Bangladesh' selected_city='Dhaka' %}">
+                    Dhaka
+                </a>
+            </li> -->
+        </ul>
+    {% endif %}
+</body>
+</html>
