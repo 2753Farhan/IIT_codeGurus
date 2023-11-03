@@ -1,7 +1,10 @@
 import requests
 from django.shortcuts import render
 
+
 def step1(request):
+    state = 'bjs'
+    country = 'hbchs'
     city_list = None
 
     if request.method == 'POST':
@@ -27,3 +30,4 @@ def step2(request, state, country, selected_city):
     city_data = r.json()
 
     return render(request, 'airapp/step2.html', {'city_data': city_data})
+
