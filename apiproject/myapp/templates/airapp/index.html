@@ -4,17 +4,21 @@
     <title>Air Information</title>
 </head>
 <body>
-    <h1>Air Information for {{ response.data.city }}, {{ response.data.state }}, {{ response.data.country }}</h1>
+    <h1>Air Quality Information</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="state">State: </label>
+        <input type="text" name="state" id="state" required><br>
 
-    <h2>Forecasts Info </h2>
-    <ul>
-        {% for k in response.data.current.pollution %}
-            <li>{{k}}</li>
-            <!-- <li>Timestamp: {{ k.ts }}</li>
-            <li>AQI (US EPA): {{ k.aqius }}</li>
-            <li>AQI (China MEP): {{ k.aqicn }}</li> -->
-            <br>
-        {% endfor %}
-    </ul>
+        <label for="country">Country: </label>
+        <input type="text" name="country" id="country" required><br>
+
+        <input type="submit" value="Get Air Quality Information">
+    </form>
+
+    {% if response %}
+        <h2>Response for {{state}}, {{country}}:</h2>
+        <pre>{{response|safe}}</pre>
+    {% endif %}
 </body>
 </html>
