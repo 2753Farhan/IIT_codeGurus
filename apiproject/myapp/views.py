@@ -7,5 +7,4 @@ def index(request):
     
     r = requests.get(url=URL)
     res = r.json()
-
     return render(request, 'airapp/index.html', {'response': res})
