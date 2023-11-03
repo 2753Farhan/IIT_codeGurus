@@ -4,10 +4,17 @@
     <title>Air Information</title>
 </head>
 <body>
-    <h1>Air Information</h1>
+    <h1>Air Information for {{ response.data.city }}, {{ response.data.state }}, {{ response.data.country }}</h1>
 
-    <pre>
-        {{response}}
-    </pre>
+    <h2>Forecasts Info </h2>
+    <ul>
+        {% for k in response.data.current.pollution %}
+            <li>{{k}}</li>
+            <!-- <li>Timestamp: {{ k.ts }}</li>
+            <li>AQI (US EPA): {{ k.aqius }}</li>
+            <li>AQI (China MEP): {{ k.aqicn }}</li> -->
+            <br>
+        {% endfor %}
+    </ul>
 </body>
 </html>
