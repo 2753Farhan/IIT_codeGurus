@@ -16,7 +16,7 @@ def step1(request):
         city_list_url = f'http://api.airvisual.com/v2/cities?state={state}&country={country}&key={YOUR_API_KEY}'
         r = requests.get(url=city_list_url)
         city_list = r.json()
-
+    
     return render(request, 'airapp/step1.html', {'city_list': city_list, 'state' : state, 'country' : country})
 
 def step2(request, state, country, selected_city):
