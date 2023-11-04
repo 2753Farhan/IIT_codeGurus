@@ -12,23 +12,11 @@
         <input type="text" name="state" id="state" required><br>
 
         <label for="country">Country: </label>
-        <input type text name="country" id="country" required><br>
-
-        <label for="city">City: </label>
-        <input type="text" name="city" id="city" required><br>
+        <input type="text" name="country" id="country" required><br>
 
         <input type="submit" value="Get Air Quality Information">
     </form>
-
-    {% if city_list %}
-        <h2>Available Cities:</h2>
-        <ul>
-            {% for city in city_list.data %}
-                <li>{{ city.city }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-
+<!-- 
     {% if city_data %}
         <h2>Response for {{ city_data.data.city }}, {{ city_data.data.state }}, {{ city_data.data.country }}:</h2>
         <pre>{{ city_data|safe }}</pre>
@@ -36,20 +24,8 @@
         {% with pollution=city_data.data.current.pollution %}
             <h3>Air Quality Index (AQI): {{ pollution.aqius }}</h3>
             
-            {% if pollution.aqius <= 50 %}
-                <p>AQI: Good</p>
-            {% elif pollution.aqius <= 100 %}
-                <p>AQI: Moderate</p>
-            {% elif pollution.aqius <= 150 %}
-                <p>AQI: Unhealthy for Sensitive Groups</p>
-            {% elif pollution.aqius <= 200 %}
-                <p>AQI: Unhealthy</p>
-            {% elif pollution.aqius <= 300 %}
-                <p>AQI: Very Unhealthy</p>
-            {% else %}
-                <p>AQI: Hazardous</p>
-            {% endif %}
         {% endwith %}
-    {% endif %}
+    {% endif %} -->
+    {{city_list}}
 </body>
 </html>
