@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Air Quality Index (AQI) - Step 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'style2.css' %}">
+</head>
+<body>
+
+    {% if city_data %}
+        <section class="glass-container">
+            <div class="glass-box">
+                <h2>City Information</h2>
+                <p><strong>City:</strong> {{ city_data.data.city }}</p>
+                {% if city_data.data.location.coordinates %}
+                    <p><strong>Location:</strong> {{ city_data.data.location.coordinates.0 }}, {{ city_data.data.location.coordinates.1 }}</p>
+                {% endif %}
+                <p><strong>Time:</strong> {{ city_data.data.current.weather.ts }}</p>
+            </div>
+            <div class="glass-box">
+                <h2>Air Quality Information</h2>
+                <p><strong>AQI US Value:</strong> {{ city_data.data.current.pollution.aqius }}</p>
+                <p><strong>AQI Category:</strong>
+                    <span class="aqi-level
+                        {% if city_data.data.current.pollution.aqius <= 50 %} good
+                        {% elif city_data.data.current.pollution.aqius <= 100 %} moderate
+                        {% elif city_data.data.current.pollution.aqius <= 150 %} unhealthy-sensitive
+                        {% elif city_data.data.current.pollution.aqius <= 200 %} unhealthy
+                        {% elif city_data.data.current.pollution.aqius <= 300 %} very-unhealthy
+                        {% else %} hazardous{% endif %}">
+                        {% if city_data.data.current.pollution.aqius <= 50 %} Good
+                        {% elif city_data.data.current.pollution.aqius <= 100 %} Moderate
+                        {% elif city_data.data.current.pollution.aqius <= 150 %} Unhealthy for Sensitive Groups
+                        {% elif city_data.data.current.pollution.aqius <= 200 %} Unhealthy
+                        {% elif city_data.data.current.pollution.aqius <= 300 %} Very Unhealthy
+                        {% else %} Hazardous{% endif %}
+                    </span>
+                </p>
+                <p><strong>AQI CN Value:</strong> {{ city_data.data.current.pollution.aqicn }}</p>
+                <p><strong>Temperature:</strong>{{ city_data.data.current.weather.tp }}</p>
+            </div>
+        </section>
+    {% endif %}
+
+    {% if city_data %}
+        <section class="glass-container">
+            <div class="glass-box">
+                    <h2>AQI Catagory</h2>
+                    <div class="aqi-box good"><strong>Good</strong></div>
+                    <div class="aqi-box moderate"><strong>Moderate</Moderate></div>
+                    <div class="aqi-box unhealthy-sensitive"><strong>Unhealthy for Sensitive Groups</strong></div>
+                    <div class="aqi-box unhealthy"><strong>Unhealthy</strong></div>
+                    <div class="aqi-box very-unhealthy"><strong>Very Unhealthy</strong></div>
+                    <div class="aqi-box hazardous"><strong>Hazardous</strong></div>
+            </div>
+        </div>
+        </section>
+    {% endif %}
+
+</body>
+</html>
+
+
+
+<!-- {% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Air Quality Index (AQI) - Step 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'style1.css' %}">
+</head>
+<body>
+
+    {% if city_data %}
+        <h2>Data for {{ city_data.data.city }}, {{ city_data.data.state }}, {{ city_data.data.country }}:</h2>
+        <pre>Pollution : {{ city_data.data.current.pollution|safe }}</pre>
+        <pre>Weather : {{ city_data.data.current.weather|safe }}</pre>
+        
+        {% with pollution=city_data.data.current.pollution %}
+            <h3>Air Quality Index (AQI): {{ pollution.aqius }}</h3>
+            
+            {% if pollution.aqius <= 50 %}
+                <p>AQI: Good</p>
+            {% elif pollution.aqius <= 100 %}
+                <p>AQI: Moderate</p>
+            {% elif pollution.aqius <= 150 %}
+                <p>AQI: Unhealthy for Sensitive Groups</p>
+            {% elif pollution.aqius <= 200 %}
+                <p>AQI: Unhealthy</p>
+            {% elif pollution.aqius <= 300 %}
+                <p>AQI: Very Unhealthy</p>
+            {% else %}
+                <p>AQI: Hazardous</p>
+            {% endif %}
+        {% endwith %}
+    {% endif %}
+</body>
+</html> -->

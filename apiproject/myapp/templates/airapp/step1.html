@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Step 1: Select State and Country</title>
+    <link rel="stylesheet" href="{% static 'style1.css' %}">
+</head>
+
+<link rel="stylesheet" href="{% static 'style1.css' %}">
+
+<body>
+    <div class="container">
+        <div class="blur">
+            <div class="header">
+                <h1>WORLD'S AIR POLLUTION</h1>
+                <div class="aqi">
+                    <p><h3>Air Quality Index (AQI)</h3></p>
+                    <br>
+                    <p>The Air Quality Index is based on measurement of particulate matter</p>
+                    <p>(PM 2.5 and PM 10), Ozone (O3), Nitrogen Dioxide (NO2), Sulfur Dioxide (SO2)</p>
+                    <p>and Carbon Monoxide (CO) emissions.</p>
+                </div>
+            </div>
+
+            <div class="search-form">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="sc-search">
+                        <div class="search-state-country">
+                            <label for="state">STATE:</label>
+                            <input type="text" name="state" id="state" value="{{ state }}" required><br>
+                        </div>
+                        <div class="search-state-country">
+                            <label for="country">COUNTRY:</label>
+                            <input type="text" name="country" id="country" value="{{ country }}" required><br>
+                        </div>
+                    </div>
+                    
+                    <input type="submit" value="Search">
+                </form>
+            </div>    
+        </div>
+    </div>
+    <div class="map">
+        <a href="http://127.0.0.1:8000/map/">
+            <button>Go to Map</button>
+        </a>
+    </div>
+    <div class="options">
+        <div class="polluted-cities">
+            <a href="#">Top 10 Polluted Cities</a>
+        </div>
+        <div class="cleanest-cities">
+            <a href="#">Top 10 Cleanest Cities</a>
+        </div>
+        <div class="comparative-analysis">
+            <a href="#">Comparative Analysis</a>
+        </div>
+    </div>
+
+    {% if city_list %}
+    <h2 class="city-list-title">Available Cities for {{ country }}, {{ state }}:</h2>
+    <ul class="city-list">
+        {% for city in city_list.data %}
+            <li class="city-list-item">
+                <a href="{% url 'step2' state country city.city %}" class="city-link">
+                    {{ city.city }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+</body>
+</html>

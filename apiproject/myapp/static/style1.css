@@ -1,0 +1,268 @@
+/* Reset some default styles */
+html, body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin-top: 3%;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6); /* Gradient background */
+    text-align: center;
+}
+
+/* Header Styles */
+.header {
+    margin-top: 2%;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    color: rgba(215, 43, 43, 0.7);;
+    font-family: Poppins;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 5%;
+}
+
+.header h1 {
+    font-size: 28px;
+}
+
+.aqi {
+    color: #404040;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    gap: 20px;
+}
+
+.sc-search {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.search-state-country {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #a5a3a3;
+    border-radius: 5px;
+    font-size: 16px; /* Increase font size for better readability */
+}
+
+input[type="submit"] {
+    background-color: rgba(207, 47, 47, 0.7); /* Transparent reddish color */
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 150px;
+}
+
+/* Rounded corners for input fields */
+input[type="text"], input[type="submit"] {
+    border-radius: 25px;
+}
+
+/* Modern styles for the submit button */
+input[type="submit"] {
+    background: linear-gradient(to bottom, #FF5F6D, #FF7A65);
+    box-shadow: 0 4px 6px rgba(255, 95, 109, 0.2);
+    margin: 0  auto;
+}
+
+
+/* Background Image */
+body {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Options Section Styles */
+.options {
+    display: flex;
+    justify-content: space-between;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.polluted-cities, .cleanest-cities, .comparative-analysis {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px); /* Add the frosted glass effect */
+    transition: background 0.3s, backdrop-filter 0.3s;
+    cursor: pointer;
+}
+
+.polluted-cities:hover, .cleanest-cities:hover, .comparative-analysis:hover {
+    background: rgba(255, 255, 255, 0.3); /* Adjust to your preference on hover */
+}
+
+
+a {
+    text-decoration: none;
+    color: #044c98;
+    font-weight: 700;
+}
+
+/* Style for the city list title */
+.city-list-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* Style for the city list */
+.city-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Style for each city list item */
+.city-list-item {
+    margin: 5px 0;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+/* Style for city links */
+.city-link {
+    text-decoration: none;
+    color: #333;
+}
+
+/* Hover effect for city list items */
+.city-list-item:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+
+/* City List Styles */
+h2 {
+    color: #333;
+    margin-top: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin: 5px 0;
+}
+
+a.button {
+    display: inline-block;
+    background-color: rgba(255, 0, 0, 0.7); /* Transparent reddish color */
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+a.button:hover {
+    background-color: rgba(200, 0, 0, 0.7); /* Darker shade on hover */
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.step-links {
+    display: inline-block;
+}
+
+.step-links a {
+    padding: 5px 10px;
+    margin: 0 5px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.current-page {
+    margin: 0 10px;
+}
+
+.container {
+    display: flex;
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    height: 100vh; /* Use 100% of the viewport height */
+}
+
+.blur {
+    width: 893px;
+    height: 500px;
+    flex-shrink: 0;
+    border-radius: 50px;
+    border: 2px solid rgba(175, 175, 175, 0.50);
+    background: linear-gradient(133deg, rgba(255, 255, 255, 0.40) 5%, rgba(255, 255, 255, 0.10) 95%);
+    backdrop-filter: blur(40px);
+}
+
+.map {
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+        max-width: 80px;
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 20px;
+        background: linear-gradient(133deg, rgba(255, 255, 255, 0.40) 5%, rgba(255, 255, 255, 0.10) 95%);
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+

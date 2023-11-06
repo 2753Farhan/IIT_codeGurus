@@ -1,0 +1,16 @@
+Air Information for {
+    'status': 'success', 
+    'data': {
+        'city': 'Los Angeles', 'state': 'California', 'country': 'USA', 'location': {
+        'type': 'Point', 'coordinates': [-118.2417, 34.0669]
+        }, 
+        'current': {
+            'pollution': {
+            'ts': '2023-11-03T07:00:00.000Z', 'aqius': 37, 'mainus': 'p2', 'aqicn': 13, 'maincn': 'p2'
+            }
+            , 'weather': {
+            'ts': '2023-11-03T07:00:00.000Z', 'tp': 18, 'pr': 1019, 'hu': 46, 'ws': 0, 'wd': 0, 'ic': '01n'
+            }
+        }
+        }
+        }

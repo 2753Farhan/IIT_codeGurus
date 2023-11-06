@@ -1,0 +1,59 @@
+/* Glass card effect */
+body {
+    margin-top: 3%;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6); /* Gradient background */
+    text-align: center;
+}
+
+.glass-container {
+    display: flex;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.glass-box {
+    flex: 1;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+
+
+.aqi-level {
+    font-weight: bold;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.good {
+    background-color: #4CAF50; /* Green */
+}
+
+.moderate {
+    background-color: #FFC107; /* Amber */
+}
+
+.unhealthy-sensitive {
+    background-color: #FF5722; /* Deep Orange */
+}
+
+.unhealthy {
+    background-color: #FF9800; /* Orange */
+}
+
+.very-unhealthy {
+    background-color: #F44336; /* Red */
+}
+
+.hazardous {
+    background-color: #9C27B0; /* Purple */
+}

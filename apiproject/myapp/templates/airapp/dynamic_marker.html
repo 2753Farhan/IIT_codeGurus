@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <style>
+        #map {position: absolute; top: 0; bottom: 0; left: 0; right: 0; }
+        #loading-spinner { display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Marker</title>
+</head>
+<body>
+    <div id="map"></div>
+    <div id="loading-spinner">
+        <img src="loading.gif" alt="Loading..." width="50" height="50">
+    </div>
+    <script>
+        var map = L.map('map').setView([0, 0], 1);
+        L.tileLayer('https://api.maptiler.com/maps/basic-v2/{z}/{x}/{y}.png?key=qcLG29tbx9aFym4rY06j', {
+            attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
+        }).addTo(map);
+
+        var marker = L.marker([0, 0]).addTo(map);
+        var cityPlaceholder = "<b>City:</b> City Name";
+        marker.bindPopup(cityPlaceholder).openPopup();
+
+        var loadingSpinner = document.getElementById('loading-spinner');
+
+        // Event listener for clicking on the map
+        map.on('click', function(e) {
+            var lat = e.latlng.lat;
+            var lon = e.latlng.lng;
+            marker.setLatLng([lat, lon]);
+
+            // Display the loading spinner
+            loadingSpinner.style.display = 'block';
+
+            // Make an API request to get city and pollution data
+            var apiUrl = 'http://api.airvisual.com/v2/nearest_city?lat=' + lat + '&lon=' + lon + '&key=a183fa50-bb56-4b08-9bed-d88f4aa07c39';
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    var city = data.data.city;
+                    var aqius = data.data.current.pollution.aqius;
+                    var mainus = data.data.current.pollution.mainus;
+                    var aqicn = data.data.current.pollution.aqicn;
+                    var maincn = data.data.current.pollution.maincn;
+
+                    // Update the marker's popup content with the city and pollution information
+                    var updatedPopup = "<b>City:</b> " + city +
+                        "<br><b>AQI (US):</b> " + aqius +
+                        "<br><b>Main Pollutant (US):</b> " + mainus +
+                        "<br><b>AQI (China):</b> " + aqicn +
+                        "<br><b>Main Pollutant (China):</b> " + maincn;
+                    marker.setPopupContent(updatedPopup).openPopup();
+
+                    // Hide the loading spinner
+                    loadingSpinner.style.display = 'none';
+                })
+                .catch(error => {
+                    console.error(error);
+
+                    // Hide the loading spinner and show an error message
+                    loadingSpinner.style.display = 'none';
+                    marker.setPopupContent("<b>Failed to load data. Please try again later.</b>").openPopup();
+                });
+        });
+
+        marker.bindPopup("<b>Coordinates:</b> Lat 0, Long 0").openPopup(); // Initial popup with default coordinates
+    </script>
+</body>
+</html>
